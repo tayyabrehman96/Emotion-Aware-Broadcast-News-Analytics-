@@ -2,7 +2,7 @@
 
 Repository accompanying the paper **"Emotion-Aware Broadcast News Analytics: An Integrated Deep Learning Pipeline for Topic Extraction, Sentiment Intensity Scaling, and Semantic-Preserving Regulation"** (submitted to Knowledge-Based Systems).
 
-This codebase implements the experimental pipeline for segment-level topic modeling, sentiment analysis, and semantic-preserving intensity regulation on broadcast news content. It is provided for reproducibility and peer review.
+This repository contains **only the implementation**: main code, model/training logic, API integration, and numbered result images. It does not include the paper source (LaTeX/BibTeX).
 
 ---
 
@@ -10,23 +10,22 @@ This codebase implements the experimental pipeline for segment-level topic model
 
 | Path | Description |
 |------|-------------|
-| `main.py` | **Main entry point** — runs the full pipeline: segmentation, topic labeling, sentiment analysis, rephrasing, and export. |
-| `codes.py` | YouTube API integration (search, download) and video transcription (AssemblyAI). |
-| `transcript_and_segmentation.py` | Video-to-segment pipeline using AssemblyAI (transcription + IAB-based segmentation). |
+| `main.py` | **Main entry point** — full pipeline: segmentation, topic labeling, sentiment analysis, rephrasing, export. |
+| `codes.py` | YouTube API (search, download) and video transcription (AssemblyAI). |
+| `transcript_and_segmentation.py` | Video-to-segment pipeline (AssemblyAI transcription + IAB segmentation). |
 | `semantic_segmentation.py` | Text-based semantic segmentation (AI21 Semantic Text Splitter). |
-| `modeling.py` | Topic modeling (LDA, Gensim) and taxonomy mapping with embeddings (spaCy, GloVe). |
+| `modeling.py` | Topic modeling (LDA, Gensim) and taxonomy mapping (spaCy, GloVe). |
 | `sentiment_analysis.py` | Sentiment classification (zero-shot BART) and iterative rephrasing loop. |
-| `rephrase.py` | Semantic-preserving rephrasing (Google Generative AI) to reduce emotional intensity. |
-| `save_data.py` | Export of results to Excel (date, segment, topic, sentiment, scores). |
-| `plot_data.py` | Plotting utilities for dataset summary and paper figures (run separately; outputs not in repo). |
-| `run_plots_and_save_png.py` | Script to regenerate figures from saved data. |
-| `generate_organic_dataset.py` | Helper to generate synthetic/organic dataset for testing. |
-| `main.tex` | LaTeX source of the manuscript. |
-| `example.bib` | Bibliography. |
+| `rephrase.py` | Semantic-preserving rephrasing (Google Generative AI). |
+| `save_data.py` | Export to Excel (date, segment, topic, sentiment, scores). |
+| `plot_data.py` | Plotting utilities for dataset summary and figures. |
+| `run_plots_and_save_png.py` | Regenerate numbered figures from saved data. |
+| `generate_organic_dataset.py` | Helper to generate synthetic dataset for testing. |
+| `results_images/` | **Numbered result images** (e.g. `figure1.png`, `figure2.png`) — add your outputs here. |
 | `requirements.txt` | Python dependencies. |
-| `.env.example` | Template for API keys and configuration (copy to `.env`). |
+| `.env.example` | Template for API keys (copy to `.env`). |
 
-Generated outputs (figures, Excel files, downloaded media) are excluded via `.gitignore`; reviewers may reproduce them using the instructions below.
+Other generated outputs (Excel, downloads) remain untracked; only `results_images/*.png` and `*.jpg` are committed.
 
 ---
 
@@ -82,13 +81,13 @@ Generated outputs (figures, Excel files, downloaded media) are excluded via `.gi
   ```
   This will: transcribe/segment input, label topics, run sentiment analysis, apply rephrasing where needed, and save results to the configured Excel file.
 
-**Regenerate figures (optional)**
+**Regenerate result images**
 
-- After running the pipeline and saving data, use:
+- After running the pipeline and saving data:
   ```bash
   python run_plots_and_save_png.py
   ```
-  Output figures are written to disk and are not tracked in the repository.
+  Save the generated figures as `figure1.png`, `figure2.png`, etc. in `results_images/` to include them in the repo.
 
 ---
 

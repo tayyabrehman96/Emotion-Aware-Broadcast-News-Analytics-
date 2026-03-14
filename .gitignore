@@ -39,12 +39,13 @@ env/
 .DS_Store
 Thumbs.db
 
-# Generated outputs (do not submit to journal)
+# Generated outputs (keep results_images/ for numbered result figures)
 *.png
 *.jpg
 *.jpeg
+!results_images/*.png
+!results_images/*.jpg
 *.pdf
-figure*.png
 output/
 results/
 plots/
