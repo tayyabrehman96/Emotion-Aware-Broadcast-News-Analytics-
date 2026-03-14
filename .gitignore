@@ -45,6 +45,9 @@ Thumbs.db
 *.jpeg
 !results_images/*.png
 !results_images/*.jpg
+!docs/*.png
+!docs/*.jpg
+!docs/*.svg
 *.pdf
 output/
 results/
